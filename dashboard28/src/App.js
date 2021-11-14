@@ -13,9 +13,10 @@ function App() {
         {/* <Nav/> */}
         <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path="/timeplots" element={<TimePlots/>}/>
+          <Route path="/timeplots/l7data" element={<TimePlots interval="7"/>}/>
+          <Route path="/timeplots/l30data" element={<TimePlots interval="30"/>}/>
           <Route path="/pieplots" element={<PiePlots/>}/>
-          <Route path="*" element={<div>Vazio</div>}/>
+          <Route path="*" element={<h1>Rota não encontrada</h1>}/>
         </Routes>
       </div>
     </Router>
