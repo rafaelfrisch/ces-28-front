@@ -2,8 +2,7 @@ import './App.css';
 import React from 'react';
 
 import Home from './components/Home'
-import TimePlots from './components/TimePlots'
-import PiePlots from './components/PiePlots'
+import Dashboards from './components/Dashboards'
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 
 function App() {
@@ -13,9 +12,7 @@ function App() {
         {/* <Nav/> */}
         <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path="/timeplots/l7data" element={<TimePlots interval="7"/>}/>
-          <Route path="/timeplots/l30data" element={<TimePlots interval="30"/>}/>
-          <Route path="/pieplots" element={<PiePlots/>}/>
+          <Route path="/dashboards" element={<Dashboards/>}/>
           <Route path="*" element={<h1>Rota não encontrada</h1>}/>
         </Routes>
       </div>
