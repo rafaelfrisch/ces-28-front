@@ -54,7 +54,7 @@
 
 .sidebar-menu-items {
     width: 100%;
-
+    flex-direction: column;
 }
 
 .sidebar-toogle {
