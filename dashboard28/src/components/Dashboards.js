@@ -3,6 +3,8 @@ import { BarChart } from 'recharts';
 import './styles/Dashboards.css'
 import l30data from './Time30Data';
 import BarPlot, {MTicket} from './TimePlot';
+import PieChart from './PiePlots';
+import piedata from './PieData';
 
 export default function Dashboards(props){
     return(
@@ -17,6 +19,8 @@ export default function Dashboards(props){
             <ul>
                 <li id = "e3">Medium Ticket</li>
             </ul>
+            <h1>Análise por grupo</h1>
+            <PieChart data={piedata}/>
         </div>
     );
 }
