@@ -2,19 +2,16 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    font-size: 1.5rem;
     background-color: darkslategray;
     width: 100%;
 }
 
 h1{
-    margin: 0;
-    margin-top: 10px;
-    margin-left: 10px;
+    margin: 10px;
 }
 h2{
-    margin: 10px;
-    margin-left: 10px;
+    margin: 5px;
+    margin-left: 5px;
 }
 
 ul{
@@ -23,9 +20,10 @@ ul{
 }
 
 li{
-    font-size: 2.5rem;
-    margin-left: 60px;
+    font-size: 1.5rem;
+    margin-left: 30px;
     margin-top: 0;
+    margin-bottom: 10px;
 }
 
 #e1{

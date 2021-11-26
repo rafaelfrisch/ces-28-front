@@ -3,13 +3,13 @@ import { Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Bar
 
 export default function BarPlot(props){
   const Barchart = (<BarChart
-          width={2000}
-          height={1000}
+          width={1500}
+          height={500}
           data={props.data}
           margin={{
             top: 5,
             right: 30,
-            bottom: 20,
+            bottom: 5,
             left: 5,
           }}
         >
@@ -28,8 +28,8 @@ export default function BarPlot(props){
 
 export  function MTicket(props){
   const Linechart = (<LineChart
-    width={1800}
-    height={1000}
+    width={1200}
+    height={500}
     data={props.data}
     margin={{
       top: 5,
