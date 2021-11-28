@@ -18,7 +18,7 @@ function App() {
             <Route path="/dashboards" element={<Dashboards/>}/>
             <Route path="*" element={<h1>Rota não encontrada</h1>}/>
           </Routes>
-          </div>        
+        </div>        
       </Router> 
   );
 }
