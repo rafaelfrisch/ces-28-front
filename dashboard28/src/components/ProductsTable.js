@@ -29,6 +29,8 @@ function ProductsTable(props) {
                         background: 'aliceblue',
                         color: 'black',
                         fontWeight: 'bold',
+                        textAlign: 'center',
+                        minWidth: 200
                         }}
                     >
                         {column.render('Header')}
@@ -50,6 +52,7 @@ function ProductsTable(props) {
                             padding: '10px',
                             border: 'solid 1px gray',
                             background: 'white',
+                            textAlign: 'center',
                             }}
                         >
                             {cell.render('Cell')}

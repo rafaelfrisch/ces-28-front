@@ -1,20 +1,18 @@
 #container{
     background-color: white;
-    height: 100vh;
 }
 #productsTable{
     color: black;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 #new-product{
     color: black;
-    height: 15%;
 }
 #tableContainer{
-    height: 85%;
     background-color: white;
     display: flex;
     justify-content: center;
+    margin-bottom: 100px;
 }
 .button{
     display: inline-block;
