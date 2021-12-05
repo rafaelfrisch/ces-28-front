@@ -3,8 +3,8 @@ import SideBar from './components/SideBar';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Products from './pages/Products';
 import Users from './pages/Users';
-import Home from './components/Home'
-import Dashboards from './components/Dashboards'
+import Home from './pages/Home'
+import Dashboards from './pages/Dashboard'
 
 function App() {
   return (

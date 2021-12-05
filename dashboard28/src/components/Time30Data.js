@@ -1,180 +1,180 @@
 const l30data = [
     {
-      name: '1',
+      day: '11',
       sales: 80,
       profit: 1050,
       medium_ticket: 13.13
     },
     {
-      name: '2',
+      day: '12',
       sales: 30,
       profit: 265,
       medium_ticket: 8.83
     },
     {
-      name: '3',
+      day: '3',
       sales: 10,
       profit: 140,
       medium_ticket: 14.00
     },
     {
-      name: '4',
+      day: '4',
       sales: 80,
       profit: 318,
       medium_ticket: 3.98
     },
     {
-      name: '5',
+      day: '5',
       sales: 50,
       profit: 700,
       medium_ticket: 14.00
     },
     {
-      name: '6',
+      day: '6',
       sales: 40,
       profit: 500,
       medium_ticket: 1.25
     },
     {
-      name: '7',
+      day: '7',
       sales: 80,
       profit: 1000,
       medium_ticket: 12.50
     },
     {
-      name: '8',
+      day: '8',
       sales: 80,
       profit: 1050,
       medium_ticket: 13.13
     },
     {
-      name: '9',
+      day: '9',
       sales: 30,
       profit: 265,
       medium_ticket: 8.83
     },
     {
-      name: '10',
+      day: '10',
       sales: 10,
       profit: 140,
       medium_ticket: 14.00
     },
     {
-      name: '11',
+      day: '11',
       sales: 80,
       profit: 318,
       medium_ticket: 3.98
     },
     {
-      name: '12',
+      day: '12',
       sales: 50,
       profit: 700,
       medium_ticket: 14.00
     },
     {
-      name: '13',
+      day: '13',
       sales: 40,
       profit: 500,
       medium_ticket: 1.25
     },
     {
-      name: '14',
+      day: '14',
       sales: 80,
       profit: 1000,
       medium_ticket: 12.50
     },
     {
-      name: '15',
+      day: '15',
       sales: 80,
       profit: 1050,
       medium_ticket: 13.13
     },
     {
-      name: '16',
+      day: '16',
       sales: 30,
       profit: 265,
       medium_ticket: 8.83
     },
     {
-      name: '17',
+      day: '17',
       sales: 10,
       profit: 140,
       medium_ticket: 14.00
     },
     {
-      name: '18',
+      day: '18',
       sales: 80,
       profit: 318,
       medium_ticket: 3.98
     },
     {
-      name: '19',
+      day: '19',
       sales: 50,
       profit: 700,
       medium_ticket: 14.00
     },
     {
-      name: '20',
+      day: '20',
       sales: 40,
       profit: 500,
       medium_ticket: 1.25
     },
     {
-      name: '21',
+      day: '21',
       sales: 80,
       profit: 1000,
       medium_ticket: 12.50
     },
     {
-      name: '22',
+      day: '22',
       sales: 80,
       profit: 1050,
       medium_ticket: 13.13
     },
     {
-      name: '23',
+      day: '23',
       sales: 30,
       profit: 265,
       medium_ticket: 8.83
     },
     {
-      name: '24',
+      day: '24',
       sales: 10,
       profit: 140,
       medium_ticket: 14.00
     },
     {
-      name: '25',
+      day: '25',
       sales: 80,
       profit: 318,
       medium_ticket: 3.98
     },
     {
-      name: '26',
+      day: '26',
       sales: 50,
       profit: 700,
       medium_ticket: 14.00
     },
     {
-      name: '27',
+      day: '27',
       sales: 40,
       profit: 500,
       medium_ticket: 1.25
     },
     {
-      name: '28',
+      day: '28',
       sales: 80,
       profit: 1000,
       medium_ticket: 12.50
     },
     {
-      name: '29',
+      day: '29',
       sales: 80,
       profit: 1000,
       medium_ticket: 12.50
     },
     {
-      name: '30',
+      day: '30',
       sales: 80,
       profit: 1000,
       medium_ticket: 12.50

@@ -2,8 +2,9 @@ import React from 'react';
 import { Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, BarChart} from 'recharts';
 
 export default function BarPlot(props){
-  const Barchart = (<BarChart
-          width={1500}
+  return (
+    <BarChart
+          width={600}
           height={500}
           data={props.data}
           margin={{
@@ -14,21 +15,18 @@ export default function BarPlot(props){
           }}
         >
           <CartesianGrid strokeDasharray="10 10" stroke="white" />
-          <XAxis dataKey="name" stroke="white"/>
-          <YAxis yAxisId="left" orientation="left" stroke="white" />
-          <YAxis yAxisId="right" orientation="right" stroke="white" />
+          <XAxis dataKey={props.xlabel} stroke="white"/>
+          <YAxis stroke="white" />
           <Tooltip />
-          <Bar yAxisId="left" dataKey={props.param[0]} fill={props.color[0]} />
-          <Bar yAxisId="right" dataKey={props.param[1]} fill={props.color[1]} />
-        </BarChart>);
-  return (
-    Barchart
+          <Bar dataKey={props.param} fill={props.color} />
+
+      </BarChart>
   );
 }
 
 export  function MTicket(props){
   const Linechart = (<LineChart
-    width={1200}
+    width={600}
     height={500}
     data={props.data}
     margin={{

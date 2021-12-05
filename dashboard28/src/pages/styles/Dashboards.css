@@ -6,6 +6,11 @@
     width: 100%;
 }
 
+.graph_line{
+    display: flex;
+    align-items: flex-end;
+}
+
 h1{
     margin: 10px;
 }
