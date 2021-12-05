@@ -1,11 +1,17 @@
 import React from 'react';
-import { FiGrid, FiDatabase, FiUser } from "react-icons/fi";
+import { FiGrid, FiDatabase, FiUser, FiBarChart2 } from "react-icons/fi";
 
 export const SideBarData = [
     {
-        title: 'Dashboard',
+        title: 'Home',
         path: '/',
         icon: <FiGrid size={24} color="white" />,
+        cName: 'nav-text'
+    },
+    {
+        title: 'Dashboard',
+        path: '/dashboards',
+        icon: <FiBarChart2 size={24} color="white" />,
         cName: 'nav-text'
     },
     {
