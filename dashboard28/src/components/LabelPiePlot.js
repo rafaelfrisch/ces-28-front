@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { PieChart, Pie, Sector} from 'recharts';
 
-const COLORS = ['red', 'green', 'blue', 'brown', 'yellow', 'black', 'purple', 'cyan'];
-
 const renderActiveShape = (props) => {
     const RADIAN = Math.PI / 180;
     const { cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle, fill, payload, percent, value } = props;
@@ -41,7 +39,7 @@ const renderActiveShape = (props) => {
         />
         <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" />
         <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
-        <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="white">{`Quantidade vendida: ${value}`}</text>
+        <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="white">{`Amount: ${value}`}</text>
         <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="gold">
           {`(Rate ${(percent * 100).toFixed(2)}%)`}
         </text>
@@ -52,27 +50,24 @@ const renderActiveShape = (props) => {
 export default function PiePlot(props){
 
     const [state, setState] = useState(0);
-    
-    const PiePlot = (
-        <PieChart width={1000} height={600}>
-              <Pie
-                activeIndex={state.activeIndex}
-                activeShape={renderActiveShape}
-                data={props.data}
-                cx="50%"
-                cy="50%"
-                innerRadius={200}
-                outerRadius={250}
-                fill="black"
-                dataKey="value"
-                onMouseEnter={
-                    (_, index) => 
-                        {setState({
-                        activeIndex: index,
-                        });}
-                }
-              />
-            </PieChart>);
 
-    return (PiePlot);
+    return (<PieChart width={650} height={400}>
+      <Pie
+        activeIndex={state.activeIndex}
+        activeShape={renderActiveShape}
+        data={props.data}
+        cx="50%"
+        cy="50%"
+        innerRadius={120}
+        outerRadius={150}
+        fill="black"
+        dataKey="value"
+        onMouseEnter={
+            (_, index) => 
+                {setState({
+                activeIndex: index,
+                });}
+        }
+      />
+    </PieChart>);
 }
