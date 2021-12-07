@@ -31,9 +31,9 @@ export default function AverageMTicket(props) {
                 bottom: 5,
             }}
         >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey={props.xlabel} />
-            <YAxis />
+            <CartesianGrid strokeDasharray="20 2" stroke = "darkcyan"/>
+            <XAxis dataKey={props.xlabel} stroke = "darkcyan"/>
+            <YAxis stroke = "darkcyan"/>
             <Tooltip />
             <defs>
                 <linearGradient id="splitColor" x1="0" y1="0" x2="0" y2="1">

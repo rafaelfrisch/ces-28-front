@@ -16,8 +16,8 @@ export default function HorBarChart(props) {
             }}
         >
 
-            <XAxis type="number" stroke="white" />
-            <YAxis dataKey={props.xlabel} type="category" scale="band" stroke="white" />
+            <XAxis type="number" stroke="darkcyan" />
+            <YAxis dataKey={props.xlabel} type="category" scale="band" stroke="darkcyan" />
             <Tooltip />
             <Bar dataKey={props.param} barSize={20} fill="#413ea0" />
         </ComposedChart>
