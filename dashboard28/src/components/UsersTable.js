@@ -1,8 +1,8 @@
 import React from 'react';
 import { useTable } from 'react-table';
-import './styles/Products.css';
+import '../pages/styles/products.css';
 
-function ProductsTable(props) {
+function UsersTable(props) {
 
     let columns = props.columns
     let data = props.data
@@ -68,4 +68,4 @@ function ProductsTable(props) {
       )
 }
 
-export default ProductsTable;
+export default UsersTable;

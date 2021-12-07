@@ -1,88 +1,52 @@
 import React from 'react';
-import { useTable } from 'react-table'
+import { useTable } from 'react-table';
+import UsersTable from '../components/ProductsTable';
+import SideBar from '../components/SideBar';
+import {baseURL} from '../constants';
 
 function Users() {
 
     let data = [
         {
-            col1: 'Hello',
-            col2: 'World',
-        },
-        {
-            col1: 'react-table',
-            col2: 'rocks',
-        },
-        {
-            col1: 'whatever',
-            col2: 'you want',
+            col1: 'fernando',
+            col2: 'email',
+            col3: 'senha',
+            col4: 'admin',
+            col5: 'ações crud'
         },
     ]
     
     const columns = [
         {
-            Header: 'Column 1',
-            accessor: 'col1', // accessor is the "key" in the data
+            Header: 'Usuário',
+            accessor: 'col1',
         },
         {
-            Header: 'Column 2',
+            Header: 'E-mail',
             accessor: 'col2',
+        },
+        {
+          Header: 'Senha',
+          accessor: 'col3',
+        },
+        {
+          Header: 'Nível de acesso',
+          accessor: 'col4',
+        },
+        {
+          Header: 'Ações',
+          accessor: 'col5',
+          Cell: e =><a href="http://google.com"> {e.value} </a>
         },
     ]
     
-    const {
-        getTableProps,
-        getTableBodyProps,
-        headerGroups,
-        rows,
-        prepareRow,
-    } = useTable({ columns, data })
-
     return (
-        <table {...getTableProps()} style={{ border: 'solid 1px blue' }}>
-          <thead>
-            {headerGroups.map(headerGroup => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map(column => (
-                  <th
-                    {...column.getHeaderProps()}
-                    style={{
-                      borderBottom: 'solid 3px red',
-                      background: 'aliceblue',
-                      color: 'black',
-                      fontWeight: 'bold',
-                    }}
-                  >
-                    {column.render('Header')}
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody {...getTableBodyProps()}>
-            {rows.map(row => {
-              prepareRow(row)
-              return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map(cell => {
-                    return (
-                      <td
-                        {...cell.getCellProps()}
-                        style={{
-                          padding: '10px',
-                          border: 'solid 1px gray',
-                          background: 'papayawhip',
-                        }}
-                      >
-                        {cell.render('Cell')}
-                      </td>
-                    )
-                  })}
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
-      )
+      <div><SideBar/>
+        <div id="tableContainer">
+          <UsersTable data={data} columns={columns}/>
+        </div>
+      </div>
+    )
 }
 
 export default Users;
