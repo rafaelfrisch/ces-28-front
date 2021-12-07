@@ -8,10 +8,10 @@ export default function BarPlot(props){
           height={400}
           data={props.data}
           margin={{
-            top: 5,
-            right: 30,
+            top: 20,
+            right: 10,
             bottom: 5,
-            left: 5,
+            left: 10,
           }}
         >
           <CartesianGrid strokeDasharray="10 10" stroke="darkcyan" />

@@ -1,3 +1,47 @@
+.content{
+    display: flex;
+    flex-direction: row;
+    align-items: space-between;
+}
+.text{
+    background-color: whitesmoke;
+    width: 13%;
+    display: flex;
+    flex-direction: column;
+}
+
+.line_text{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    height: 600px;
+    text-align: justify;
+    width: 95%;
+    background-color: lightblue;
+    border: darkcyan solid 5px;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.details{
+    border: darkcyan solid 5px;
+    margin-top: 5px;
+    border-radius: 10px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: cyan;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+    cursor: pointer;
+}
 .Dashboards{
     display: flex;
     align-items: flex-end;
@@ -20,11 +64,11 @@
     justify-content: center;
     padding: 10px;
     width: 650px;
-    height: 500px;
+    height: 600px;
     transition: 400ms;
     color: darkcyan;
 }
 
 .card:hover{
-    background-color: rgb(185, 185, 185);
+    background-color: lightblue;
 }

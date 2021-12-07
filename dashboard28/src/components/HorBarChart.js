@@ -5,21 +5,21 @@ export default function HorBarChart(props) {
     return (
         <ComposedChart
             layout="vertical"
-            width={600}
+            width={500}
             height={400}
             data={props.data}
             margin={{
-                top: 5,
-                right: 30,
-                left: 20,
+                top: 10,
+                right: 50,
                 bottom: 5,
+                left: 50,
             }}
         >
 
             <XAxis type="number" stroke="darkcyan" />
             <YAxis dataKey={props.xlabel} type="category" scale="band" stroke="darkcyan" />
             <Tooltip />
-            <Bar dataKey={props.param} barSize={20} fill="#413ea0" />
+            <Bar dataKey={props.param} barSize={20} fill= "steelblue" />
         </ComposedChart>
     );
 }

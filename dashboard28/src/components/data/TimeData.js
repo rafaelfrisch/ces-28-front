@@ -1,12 +1,12 @@
 const l30data = [
     {
-      day: '11',
+      day: '1',
       sales: 80,
       profit: 1050,
       medium_ticket: 13.13
     },
     {
-      day: '12',
+      day: '2',
       sales: 30,
       profit: 265,
       medium_ticket: 8.83
