@@ -16,7 +16,7 @@
 }
 .button{
     display: inline-block;
-    margin: 20px;
+    margin: 10px;
 }
 .button:hover{
     color: black;

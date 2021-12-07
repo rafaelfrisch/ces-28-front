@@ -1,4 +1,4 @@
-.content{
+.auxcontent{
     display: flex;
     flex-direction: row;
     align-items: space-between;
@@ -23,14 +23,14 @@
     background-color: lightblue;
     border: darkcyan solid 5px;
     border-radius: 10px;
-    margin-top: 5px;
-    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 15px;
     margin-left: auto;
     margin-right: auto;
 }
 .details{
     border: darkcyan solid 5px;
-    margin-top: 5px;
+    margin-top: 10px;
     border-radius: 10px;
     height: 100px;
     display: flex;
@@ -54,10 +54,10 @@
     display: flex;
 }
 
-.card{
+.auxcard{
     margin: 5px;
-    border-radius: 15px;
-    border:darkcyan solid 5px;
+    margin-top: 10px;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -67,8 +67,10 @@
     height: 600px;
     transition: 400ms;
     color: darkcyan;
+    border: darkcyan solid 2px;
+    background-color: white;
 }
 
-.card:hover{
+.auxcard:hover{
     background-color: lightblue;
 }
