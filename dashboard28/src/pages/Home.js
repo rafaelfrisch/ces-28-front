@@ -3,14 +3,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import { CssBaseline } from '@material-ui/core';
 import { useState } from 'react';
 import './styles/Home.css';
-import img from './assets/img_ex.png'
-import { Link } from 'react-router-dom';
 import Login from '../components/Login'
 import SideBar from '../components/SideBar';
 import Header from '../components/Header';
 import PlaceToVisit from '../components/PlaceToVisit';
+import utils from '../utils/utils'
 
-export default function Home(props){
+export default function Home(){
 
     const [isLogged, setIsLogged] = useState(false);
     const useStyles = makeStyles((theme) => ({

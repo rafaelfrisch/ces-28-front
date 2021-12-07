@@ -1,9 +1,10 @@
 .sidebar {
     background-color: darkcyan;
-    height: 70px;
+    height: 55px;
     display: flex;
     justify-content: start;
     align-items: center;
+    position: relative;
 }
 
 .menu-bars {
@@ -86,4 +87,13 @@
 
 span {
     margin-left: 16px;
+}
+
+.user-profile {
+    position: absolute;
+    right: 0px;
+    padding: 10px;
+    color: white;
+    font-size: 17px;
+    margin-right: 30px
 }
