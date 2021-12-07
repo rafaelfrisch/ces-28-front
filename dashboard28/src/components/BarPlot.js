@@ -4,7 +4,7 @@ import { Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Bar
 export default function BarPlot(props){
   return (
     <BarChart
-          width={600}
+          width={580}
           height={400}
           data={props.data}
           margin={{
@@ -14,7 +14,7 @@ export default function BarPlot(props){
             left: 10,
           }}
         >
-          <CartesianGrid strokeDasharray="10 10" stroke="darkcyan" />
+          <CartesianGrid strokeDasharray="10 1" stroke="darkcyan" />
           <XAxis dataKey={props.xlabel} stroke="darkcyan"/>
           <YAxis stroke="darkcyan" />
           <Tooltip/>

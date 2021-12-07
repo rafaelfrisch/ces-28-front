@@ -4,7 +4,7 @@ import { Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Bar
 export default function MTicket(props) {
   return (
     <LineChart
-      width={600}
+      width={580}
       height={400}
       data={props.data}
       margin={{

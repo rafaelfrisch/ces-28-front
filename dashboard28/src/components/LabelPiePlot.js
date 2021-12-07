@@ -51,15 +51,15 @@ export default function PiePlot(props){
 
     const [state, setState] = useState(0);
 
-    return (<PieChart width={650} height={400}>
+    return (<PieChart width={600} height={400}>
       <Pie
         activeIndex={state.activeIndex}
         activeShape={renderActiveShape}
         data={props.data}
         cx="50%"
         cy="50%"
-        innerRadius={120}
-        outerRadius={150}
+        innerRadius={100}
+        outerRadius={120}
         fill="indigo"
         dataKey="value"
         onMouseEnter={
