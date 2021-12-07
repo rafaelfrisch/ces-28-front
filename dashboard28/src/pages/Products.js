@@ -271,5 +271,4 @@ function Products() {
         </div>
     )
 }
-
 export default Products;
