@@ -21,7 +21,7 @@ export default function AverageMTicket(props) {
 
     return (
         <AreaChart
-            width={600}
+            width={580}
             height={400}
             data={props.data}
             margin={{

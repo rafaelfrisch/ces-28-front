@@ -11,6 +11,7 @@ import TopChart from '../components/HorBarChart';
 import SideBar from '../components/SideBar';
 import { baseURL } from '../constants';
 import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 
 export default function Dashboards(props) {
@@ -63,7 +64,7 @@ export default function Dashboards(props) {
                     time:  "Dia " + d + ", às " + h + ":" + m,
                     orderDate: data[i].orderDate,
                     products: data[i].products,
-                    sales: getSales(data[i].products)
+                    quantidade_vendida: getSales(data[i].products)
                 })
             }
             // console.log(aux)
@@ -97,46 +98,48 @@ export default function Dashboards(props) {
     // HTML
     return (
         <div><SideBar />
+            <Row>
             <Form>
-                <Form.Group className="mb-3 p-3" >
-                    <Form.Label>Data Inicial</Form.Label>
+                    <Form.Group className="mb-3 p-1">
+                    <Form.Label><h1 className="dashboardlabel">Selecione a data inicial</h1></Form.Label>
                     <Form.Control type="date" value={dateIni} onChange={event => setDateIni(event.target.value)} />
                 </Form.Group>
-                <Form.Group className="mb-3 p-3">
-                    <Form.Label>Data Final</Form.Label>
+                <Form.Group className="mb-3 p-1">
+                    <Form.Label><h1 className="dashboardlabel">Selecione a data final</h1></Form.Label>
                     <Form.Control type="date" value={dateEnd} onChange={event => setDateEnd(event.target.value)} />
                 </Form.Group>
             </Form>
+            </Row>
             <div className="auxcontent">
                 <div className="Dashboards">
                     <h1 id="dashboard_title">Dashboards</h1>
                     <div className="graph_line">
                         <div className="auxcard">
-                            <h1>Sales</h1>
-                            <BarPlot data={timedata} param={"sales"} color={"crimson"} xlabel={"time"}/>
+                            <h1>Quantidade Vendida</h1>
+                            <BarPlot data={timedata} param={"quantidade_vendida"} color={"crimson"} xlabel={"time"}/>
                         </div>
                         <div className="auxcard">
-                            <h1>Profit</h1>
+                            <h1>Lucro</h1>
                             <BarPlot data={l30datanew} param={"profit"} color={"rgb(35, 90, 255)"} xlabel={"day"} />
                         </div>
                     </div>
                     <div className="graph_line">
                         <div className="auxcard">
-                            <h1>Medium Ticket</h1>
+                            <h1>Ticket Médio</h1>
                             <MTicket data={l30datanew} xlabel={"day"}></MTicket>
                         </div>
                         <div className="auxcard">
-                            <h1>Average medium ticket error (%)</h1>
+                            <h1>Erro Relativo do Ticket Médio</h1>
                             <AverageMTicket data={averagedatanew} xlabel={"day"} param={"new_medium_ticket"}></AverageMTicket>
                         </div>
                     </div>
                     <div className="graph_line">
                         <div className="auxcard">
-                            <h1>Most sold categories</h1>
+                            <h1>Categorias mais vendidas</h1>
                             <TopChart data={piedatanew} xlabel={"name"} param={"value"}></TopChart>
                         </div>
                         <div className="auxcard">
-                            <h1>Categories percentage</h1>
+                            <h1>Porcentagem por categoria</h1>
                             <PieChart data={piedata} />
                         </div>
                     </div>
