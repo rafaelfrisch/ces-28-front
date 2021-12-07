@@ -16,18 +16,12 @@ import Button from 'react-bootstrap/Button';
 export default function Dashboards(props) {
     const [dateIni, setDateIni] = useState("2021-08-20");
     const [dateEnd, setDateEnd] = useState("2021-08-24");
-    const [dateIniaux, setDateIniaux] = useState("2021-08-20");
-    const [dateEndaux, setDateEndaux] = useState("2021-08-22");
     const [timedata, setTimeData] = useState([]);
 
     useEffect(() => {
         getOrdersByDate(token, dateIni, dateEnd);
-    },[dateIni,dateEnd])
-
-    useEffect(() => {
-        console.log(dateIniaux)
-        console.log(dateEndaux)
-    },[dateIniaux,dateEndaux])
+        console.log(timedata)
+    }, [dateIni, dateEnd])
 
     const token = localStorage.getItem("token");
     let routeOrderBydate = "filterordersbydate";
@@ -42,7 +36,7 @@ export default function Dashboards(props) {
     }
 
     async function getOrdersByDate(token, dateIni, dateEnd) {
-        fetch(baseURL + routeOrderBydate + "?initialDateParam=" + dateIni + "&finalDateParam=" + dateEnd , {
+        fetch(baseURL + routeOrderBydate + "?initialDateParam=" + dateIni + "&finalDateParam=" + dateEnd, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -53,20 +47,30 @@ export default function Dashboards(props) {
             return res.json();
         }).then(data => {
             let aux = []
-            console.log(data)
+            // console.log(data)
             for (let i = 0; i < data.length; i++) {
                 var auxhour = new Date(data[i].orderDate);
                 var h = auxhour.getHours();
                 var m = auxhour.getMinutes();
+                if(m<10){
+                    m = "0" + m;
+                }
+                var d = auxhour.getDate();
                 aux.push({
-                    time: "" + h + ":" + m,
+                    h: h,
+                    m: m,
+                    d: d,
+                    time:  "Dia " + d + ", às " + h + ":" + m,
                     orderDate: data[i].orderDate,
                     products: data[i].products,
                     sales: getSales(data[i].products)
                 })
             }
             // console.log(aux)
-            // setTimeData(aux)
+            aux.sort((a, b) => {
+                return (a.d-b.d)*1000000 + (a.h-b.h)*1000 + (a.m-b.m);
+            })
+            setTimeData(aux)
         })
     }
 
@@ -94,34 +98,22 @@ export default function Dashboards(props) {
     return (
         <div><SideBar />
             <Form>
-                <Form.Group className="mb-3">
+                <Form.Group className="mb-3 p-3" >
                     <Form.Label>Data Inicial</Form.Label>
                     <Form.Control type="date" value={dateIni} onChange={event => setDateIni(event.target.value)} />
                 </Form.Group>
-                <Form.Group className="mb-3">
+                <Form.Group className="mb-3 p-3">
                     <Form.Label>Data Final</Form.Label>
-                    <Form.Control type="date" value={dateEnd}  onChange={event => setDateEnd(event.target.value)}/>
+                    <Form.Control type="date" value={dateEnd} onChange={event => setDateEnd(event.target.value)} />
                 </Form.Group>
             </Form>
             <div className="auxcontent">
-                <div onClick={change_hover} className="text">
-                    {show ?
-                        <div><div><div className="line_text">
-                            oi
-                        </div>
-                            <div className="line_text">
-                                line_text_2
-                            </div>
-                            <div className="line_text">
-                                line_text_3
-                            </div> </div></div> :
-                        <div className="details"> Click for details</div>}
-                </div>
                 <div className="Dashboards">
+                    <h1 id="dashboard_title">Dashboards</h1>
                     <div className="graph_line">
                         <div className="auxcard">
                             <h1>Sales</h1>
-                            <BarPlot data={l30datanew} param={"sales"} color={"crimson"} xlabel={"day"} />
+                            <BarPlot data={timedata} param={"sales"} color={"crimson"} xlabel={"time"}/>
                         </div>
                         <div className="auxcard">
                             <h1>Profit</h1>
@@ -154,8 +146,3 @@ export default function Dashboards(props) {
     );
 }
 
-// {show ? <div className="line_text">
-//                             line_text_1 
-//                         </div>: 
-//                         null
-//                         }

@@ -17,7 +17,7 @@ export default function BarPlot(props){
           <CartesianGrid strokeDasharray="10 10" stroke="darkcyan" />
           <XAxis dataKey={props.xlabel} stroke="darkcyan"/>
           <YAxis stroke="darkcyan" />
-          <Tooltip />
+          <Tooltip/>
           <Bar dataKey={props.param} fill={props.color} />
 
       </BarChart>
