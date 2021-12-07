@@ -10,15 +10,14 @@ function App() {
   return (
       <Router>
         <div className="App">
-          <SideBar />
           <Routes>
             <Route path='/products' element={<Products />} />
             <Route path='/users' element={<Users />} />
-            <Route path="/" element={<Home/>}/>
-            <Route path="/dashboards" element={<Dashboards/>}/>
-            <Route path="*" element={<h1>Rota não encontrada</h1>}/>
+            <Route path="/" element={<Home/>} />
+            <Route path="/dashboards" element={<Dashboards/>} />
+            <Route path="*" element={<h1>Rota não encontrada</h1>} />
           </Routes>
-          </div>        
+        </div>        
       </Router> 
   );
 }

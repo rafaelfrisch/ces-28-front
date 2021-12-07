@@ -19,7 +19,7 @@ function SideBar() {
             <nav className={sidebar ? 'sidebar-menu active' :  'sidebar-menu'}>
                 <ul className="sidebar-menu-items">
                     <li className="sidebar-toogle">
-                        <Link to="#" className="menu-bars" onClick={showSideBar}>
+                        <Link to="#" className="menu-bars" style={{marginLeft: -10}} onClick={showSideBar}>
                             <FiX size={26} color="white"/>
                         </Link>
                     </li>

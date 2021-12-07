@@ -8,6 +8,7 @@ import AverageMTicket from '../components/AverageMTicket';
 import PieChart from '../components/LabelPiePlot';
 import piedata from '../components/data/PieData';
 import TopChart from '../components/HorBarChart';
+import SideBar from '../components/SideBar';
 
 export default function Dashboards(props) {
     // teste de iteração
@@ -33,49 +34,51 @@ export default function Dashboards(props) {
 
     // HTML
     return (
-        <div className="content">
-            <div onClick = {change_hover} className="text">
-                {show ?
-                    <div><div><div className="line_text">
-                        line_text_1
-                    </div>
-                        <div className="line_text">
-                            line_text_2
+        <div><SideBar/>
+            <div className="content">
+                <div onClick = {change_hover} className="text">
+                    {show ?
+                        <div><div><div className="line_text">
+                            line_text_1
                         </div>
-                        <div className="line_text">
-                            line_text_3
-                        </div> </div></div> :
-                    <div className="details"> Click for details</div>}
-            </div>
-            <div className="Dashboards">
-                <div className="graph_line">
-                    <div className="card">
-                        <h1>Sales</h1>
-                        <BarPlot data={l30datanew} param={"sales"} color={"crimson"} xlabel={"day"} />
-                    </div>
-                    <div className="card">
-                        <h1>Profit</h1>
-                        <BarPlot data={l30datanew} param={"profit"} color={"rgb(35, 90, 255)"} xlabel={"day"} />
-                    </div>
+                            <div className="line_text">
+                                line_text_2
+                            </div>
+                            <div className="line_text">
+                                line_text_3
+                            </div> </div></div> :
+                        <div className="details"> Click for details</div>}
                 </div>
-                <div className="graph_line">
-                    <div className="card">
-                        <h1>Medium Ticket</h1>
-                        <MTicket data={l30datanew} xlabel={"day"}></MTicket>
+                <div className="Dashboards">
+                    <div className="graph_line">
+                        <div className="card">
+                            <h1>Sales</h1>
+                            <BarPlot data={l30datanew} param={"sales"} color={"crimson"} xlabel={"day"} />
+                        </div>
+                        <div className="card">
+                            <h1>Profit</h1>
+                            <BarPlot data={l30datanew} param={"profit"} color={"rgb(35, 90, 255)"} xlabel={"day"} />
+                        </div>
                     </div>
-                    <div className="card">
-                        <h1>Average medium ticket error (%)</h1>
-                        <AverageMTicket data={averagedatanew} xlabel={"day"} param={"new_medium_ticket"}></AverageMTicket>
+                    <div className="graph_line">
+                        <div className="card">
+                            <h1>Medium Ticket</h1>
+                            <MTicket data={l30datanew} xlabel={"day"}></MTicket>
+                        </div>
+                        <div className="card">
+                            <h1>Average medium ticket error (%)</h1>
+                            <AverageMTicket data={averagedatanew} xlabel={"day"} param={"new_medium_ticket"}></AverageMTicket>
+                        </div>
                     </div>
-                </div>
-                <div className="graph_line">
-                    <div className="card">
-                        <h1>Most sold categories</h1>
-                        <TopChart data={piedatanew} xlabel={"name"} param={"value"}></TopChart>
-                    </div>
-                    <div className="card">
-                        <h1>Categories percentage</h1>
-                        <PieChart data={piedata} />
+                    <div className="graph_line">
+                        <div className="card">
+                            <h1>Most sold categories</h1>
+                            <TopChart data={piedatanew} xlabel={"name"} param={"value"}></TopChart>
+                        </div>
+                        <div className="card">
+                            <h1>Categories percentage</h1>
+                            <PieChart data={piedata} />
+                        </div>
                     </div>
                 </div>
             </div>
