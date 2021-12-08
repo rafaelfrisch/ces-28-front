@@ -12,7 +12,7 @@ export default function HorBarChart(props) {
                 top: 10,
                 right: 50,
                 bottom: 5,
-                left: 50,
+                left: 70,
             }}
         >
 
