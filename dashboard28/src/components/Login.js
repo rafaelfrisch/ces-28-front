@@ -68,7 +68,7 @@ const styles = {
     loginContainer: {
         height: '100vh',
         width: '100vw',
-        backgroundColor: '#1C8EF9',
+        backgroundColor: 'darkcyan',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
@@ -85,6 +85,7 @@ const styles = {
     title: {
         textAlign: 'center',
         padding: 10,
+        color: 'rgb(0, 78, 78)'
     },
     inputContainer: {
         display: 'flex',
@@ -103,7 +104,8 @@ const styles = {
     },
     inputLabel: {
         marginBottom: 0,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: 'rgb(0, 78, 78)'
     },
     buttonContainer: {
         height: '20%',
@@ -117,7 +119,7 @@ const styles = {
     button: {
         width: '90%',
         border: '0px solid',
-        backgroundColor: '#007bff',
+        backgroundColor: 'darkcyan',
         borderRadius: 5,
         minHeight: 40,
         color: 'white',
@@ -126,7 +128,7 @@ const styles = {
     toggleButton : {
         width: '90%',
         border: '0px solid',
-        backgroundColor: 'blue',
+        backgroundColor: 'rgb(0, 78, 78)',
         borderRadius: 5,
         minHeight: 40,
         color: 'white',
