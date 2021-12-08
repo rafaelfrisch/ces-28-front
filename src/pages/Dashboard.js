@@ -43,7 +43,7 @@ export default function Dashboards(props) {
             let aux2 = [];
             let average = 0;
             for(let i = 0; i< data.dayReportsArray.length; i++){
-                average += data.dayReportsArray[i].dayReport.mediumticket/data.length;
+                average += data.dayReportsArray[i].dayReport.mediumticket/data.dayReportsArray.length;
             }
             for(let i = 0; i< data.dayReportsArray.length; i++){
                 aux.push({...data.dayReportsArray[i],
