@@ -46,11 +46,13 @@ export default function Dashboards(props) {
                 average += data.dayReportsArray[i].dayReport.mediumticket/data.dayReportsArray.length;
             }
             for(let i = 0; i< data.dayReportsArray.length; i++){
+                let a = data.dayReportsArray[i].date.split('/');
+                a[1] = (parseInt(a[1]) + 1).toString();
                 aux.push({...data.dayReportsArray[i],
                     prod_vendidos: data.dayReportsArray[i].dayReport.sales,
                     lucro: parseFloat(data.dayReportsArray[i].dayReport.profit.toFixed(2)),
                     ticket_medio: parseFloat(data.dayReportsArray[i].dayReport.mediumticket.toFixed(2)),
-                    x: data.dayReportsArray[i].date.split('/').reverse().join('/'),
+                    x: a.reverse().join('/'),
                     err_rel_ticket_medio: ((data.dayReportsArray[i].dayReport.mediumticket - average)/average*100).toFixed(2)
                 })
             }
