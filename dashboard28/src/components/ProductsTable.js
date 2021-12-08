@@ -17,7 +17,7 @@ function ProductsTable(props) {
 
     return (
         <div id="productsTable">
-            <table {...getTableProps()} style={{ border: 'solid 1px blue' }}>
+            <table {...getTableProps()} style={{ border: 'solid 1px darkcyan' }}>
             <thead>
                 {headerGroups.map(headerGroup => (
                 <tr {...headerGroup.getHeaderGroupProps()}>
@@ -25,12 +25,12 @@ function ProductsTable(props) {
                     <th
                         {...column.getHeaderProps()}
                         style={{
-                        borderBottom: 'solid 3px blue',
+                        borderBottom: 'solid 3px darkcyan',
                         background: 'aliceblue',
-                        color: 'black',
+                        color: 'rgb(0, 78, 78)',
                         fontWeight: 'bold',
                         textAlign: 'center',
-                        minWidth: 200
+                        minWidth: 200,
                         }}
                     >
                         {column.render('Header')}

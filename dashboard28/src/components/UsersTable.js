@@ -17,7 +17,7 @@ function UsersTable(props) {
 
     return (
         <div id="productsTable">
-            <table {...getTableProps()} style={{ border: 'solid 1px blue' }}>
+            <table {...getTableProps()} style={{ border: 'solid 1px darkcyan' }}>
             <thead>
                 {headerGroups.map(headerGroup => (
                 <tr {...headerGroup.getHeaderGroupProps()}>
@@ -25,7 +25,7 @@ function UsersTable(props) {
                     <th
                         {...column.getHeaderProps()}
                         style={{
-                        borderBottom: 'solid 3px blue',
+                        borderBottom: 'solid 3px darkcyan',
                         background: 'aliceblue',
                         color: 'black',
                         fontWeight: 'bold',

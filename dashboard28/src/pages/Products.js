@@ -190,10 +190,10 @@ function Products() {
             <div id="container">
                 <div id="new-product">
                     <div className="button">
-                        <Button variant="primary" onClick={() => setShowProductsModal(!showProductsModal)}>Novo produto</Button>
+                        <Button variant="info"  onClick={() => setShowProductsModal(!showProductsModal)}>Novo produto</Button>
                     </div>
                     <div className="button">
-                        <Button variant="primary" onClick={() => setShowCategoriesModal(!showCategoriesModal)}>Nova categoria</Button>
+                        <Button variant="info" onClick={() => setShowCategoriesModal(!showCategoriesModal)}>Nova categoria</Button>
                     </div>
                 </div>
                 <div id="tableContainer">
@@ -244,8 +244,8 @@ function Products() {
                     </Modal.Body>
 
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={() => setShowProductsModal(!showProductsModal)}>Fechar</Button>
-                        <Button variant="primary" onClick={() => createProduct(token, productName.target.value, productPrice.target.value, productCost.target.value, productStock.target.value, productCategory.target.value)}>Cadastrar</Button>
+                        <Button variant="danger" onClick={() => setShowProductsModal(!showProductsModal)}>Fechar</Button>
+                        <Button variant="info" onClick={() => createProduct(token, productName.target.value, productPrice.target.value, productCost.target.value, productStock.target.value, productCategory.target.value)}>Cadastrar</Button>
                     </Modal.Footer>
                 </Modal>
                 <Modal show={showCategoriesModal} onHide={() => setShowCategoriesModal(!showCategoriesModal)}>
@@ -263,8 +263,8 @@ function Products() {
                     </Modal.Body>
 
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={() => setShowCategoriesModal(!showCategoriesModal)}>Fechar</Button>
-                        <Button variant="primary" onClick={() => createCategory(token, categoryInput.target.value)} >Cadastrar</Button>
+                        <Button variant="danger" onClick={() => setShowCategoriesModal(!showCategoriesModal)}>Fechar</Button>
+                        <Button variant="info" onClick={() => createCategory(token, categoryInput.target.value)} >Cadastrar</Button>
                     </Modal.Footer>
                 </Modal>
             </div>
