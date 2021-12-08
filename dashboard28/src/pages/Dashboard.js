@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BarChart } from 'recharts';
 import './styles/Dashboards.css'
-import l30data from '../components/data/TimeData';
 import BarPlot from '../components/BarPlot';
 import MTicket from '../components/MTicket';
 import AverageMTicket from '../components/AverageMTicket';

@@ -29,11 +29,11 @@ function SideBar(props) {
                 </Link>
                 <div className="user-profile">
                     <Dropdown style={{backgroundColor: 'rgba(255, 255, 255, .0)', borderColor: 'rgba(255, 255, 255, .0)'}}>
-                        <Dropdown.Toggle style={{backgroundColor: 'rgba(255, 255, 255, .0)', boxShadow: '0 0 0 0 rgba(255, 255, 255, .0)', borderColor: 'rgba(255, 255, 255, .0)'}} id="dropdown-basic">
+                        <Dropdown.Toggle style={{backgroundColor: 'rgba(255, 255, 255, .0)', fontSize: '20px', boxShadow: '0 0 0 0 rgba(255, 255, 255, .0)', borderColor: 'rgba(255, 255, 255, .0)'}} id="dropdown-basic">
                             {userData !== null ? userData.name : null}
                         </Dropdown.Toggle>
                         <Dropdown.Menu >
-                            <Dropdown.Item href="#/action-1" onClick={exitSection}>Sair</Dropdown.Item>
+                            <Dropdown.Item style={{color: 'darkcyan', fontSize: '20px'}} href="#/action-1" onClick={exitSection}>Sair</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                 </div>

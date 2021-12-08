@@ -62,7 +62,7 @@
 
 .sidebar-menu-items {
     flex-direction: column;
-    width: 100%
+    width: 100%;
 }
 
 .sidebar-toogle {
@@ -94,6 +94,6 @@ span {
     right: 0px;
     padding: 10px;
     color: white;
-    font-size: 17px;
-    margin-right: 30px
+    margin-right: 30px;
+    font-size: 30px;
 }

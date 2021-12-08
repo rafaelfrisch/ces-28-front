@@ -50,14 +50,6 @@ export default function Header() {
   }, []);
   return (
     <div className={classes.root} id="header">
-      {/* <AppBar className={classes.appbar} elevation={0}>
-        <Toolbar className={classes.appbarWrapper}>
-        <h1 className={classes.appbarTitle}>
-            Dashboard<span className={classes.colorText}>28</span>
-          </h1>
-        </Toolbar>
-      </AppBar> */}
-
         <div className={classes.container}>
           <h1 className={classes.title}>
             Bem vindo ao <br />

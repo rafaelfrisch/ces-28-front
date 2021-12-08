@@ -2,7 +2,7 @@
     background-color: white;
 }
 #productsTable{
-    color: black;
+    color: rgb(1, 92, 92);
     margin-top: 50px;
 }
 #new-product{
@@ -19,7 +19,7 @@
     margin: 10px;
 }
 .button:hover{
-    color: black;
+    color: darkcyan;
     background-color: white;
     cursor: pointer;
 }
