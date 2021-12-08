@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import {baseURL} from '../constants';
+import Spinner from 'react-bootstrap/Spinner';
 
 export default function Login(){
 
@@ -8,8 +9,10 @@ export default function Login(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [warning, setWarning] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     function login(event){
+        setLoading(true)
         event.preventDefault();
         fetch(baseURL + 'login', {
             method: 'POST',
@@ -24,6 +27,8 @@ export default function Login(){
           }).then(res => {
             return res.json();
           }).then(data => {
+              setLoading(false)
+
               if(data.erro != null || data.message == 'Password does not match')
                 setWarning("Credenciais incorretas");
               else if(data.message == "Authentication successfully"){
@@ -56,7 +61,12 @@ export default function Login(){
                         null
                     }
                     <div id="loginButton" style={styles.buttonContainer}>
-                        <button type="submit" style={onMouseOver ? styles.toggleButton : styles.button} onMouseOver={() => setOnMouseOver(true)} onMouseOut={() => setOnMouseOver(false)}>Entrar</button>
+                        <button type="submit" style={onMouseOver ? (loading ? styles.hideButton : styles.toggleButton) : (loading ? styles.hideButton : styles.button)} onMouseOver={() => setOnMouseOver(true)} onMouseOut={() => setOnMouseOver(false)}>Entrar</button>
+                        <div className="spinner" style={loading ? styles.loading : styles.notLoading}>
+                            <Spinner animation="border" role="status">
+                                <span className="visually-hidden">Loading...</span>
+                            </Spinner>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -132,8 +142,17 @@ const styles = {
         color: 'white',
         fontSize: 17
     },
+    hideButton: {
+        display: 'none'
+    },
     warning: {
         color: 'red',
         fontSize: 14
+    },
+    notLoading: {
+        display: 'none'
+    },
+    loading: {
+        display: 'block'
     }
 };

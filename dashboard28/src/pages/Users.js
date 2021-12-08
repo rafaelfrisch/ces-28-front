@@ -1,12 +1,37 @@
 import React from 'react';
-import { useTable } from 'react-table';
+import { useState, useEffect } from 'react';
 import UsersTable from '../components/ProductsTable';
 import SideBar from '../components/SideBar';
 import {baseURL} from '../constants';
+import './styles/Users.css';
 
 function Users() {
 
-    let data = [
+  const [data, setData] = useState([]);
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    getAllUsers(token);
+    console.log("oi")
+  }, [token])
+
+  //Get all users
+  async function getAllUsers(token){
+      fetch(baseURL + 'getallusers', {
+          method: 'GET',
+          headers:{
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+              'Authorization': "Bearer " + token
+          }
+      }).then(res => {
+        return res.json();
+      }).then(data => {
+          console.log(data)
+      })
+  }
+
+    /* let data = [
         {
             col1: 'fernando',
             col2: 'email',
@@ -14,7 +39,7 @@ function Users() {
             col4: 'admin',
             col5: 'ações crud'
         },
-    ]
+    ] */
     
     const columns = [
         {
