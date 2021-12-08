@@ -16,25 +16,15 @@ import Button from 'react-bootstrap/Button';
 
 export default function Dashboards(props) {
     const [dateIni, setDateIni] = useState("2021-08-20");
-    const [dateEnd, setDateEnd] = useState("2021-08-24");
+    const [dateEnd, setDateEnd] = useState("2021-08-31");
     const [timedata, setTimeData] = useState([]);
-
+    console.log(timedata)
     useEffect(() => {
         getOrdersByDate(token, dateIni, dateEnd);
-        console.log(timedata)
     }, [dateIni, dateEnd])
 
     const token = localStorage.getItem("token");
-    let routeOrderBydate = "filterordersbydate";
-
-    function getSales(data) {
-        let qtd = 0;
-
-        for (let i = 0; i < data.length; i++) {
-            qtd += data[i].quantity;
-        }
-        return qtd
-    }
+    let routeOrderBydate = "getorderreportbydate";
 
     async function getOrdersByDate(token, dateIni, dateEnd) {
         fetch(baseURL + routeOrderBydate + "?initialDateParam=" + dateIni + "&finalDateParam=" + dateEnd, {
@@ -47,54 +37,25 @@ export default function Dashboards(props) {
         }).then(res => {
             return res.json();
         }).then(data => {
-            let aux = []
-            // console.log(data)
-            for (let i = 0; i < data.length; i++) {
-                var auxhour = new Date(data[i].orderDate);
-                var h = auxhour.getHours();
-                var m = auxhour.getMinutes();
-                if(m<10){
-                    m = "0" + m;
-                }
-                var d = auxhour.getDate();
-                aux.push({
-                    h: h,
-                    m: m,
-                    d: d,
-                    time:  "Dia " + d + ", às " + h + ":" + m,
-                    orderDate: data[i].orderDate,
-                    products: data[i].products,
-                    quantidade_vendida: getSales(data[i].products)
+            let aux = [];
+            let average = 0;
+            for(let i = 0; i< data.length; i++){
+                average += data[i].dayReport.mediumticket/data.length;
+            }
+            for(let i = 0; i< data.length; i++){
+                aux.push({...data[i],
+                    metric: (data[i].dayReport.mediumticket - average)/average*100
                 })
             }
-            // console.log(aux)
-            aux.sort((a, b) => {
-                return (a.d-b.d)*1000000 + (a.h-b.h)*1000 + (a.m-b.m);
-            })
             setTimeData(aux)
         })
     }
 
     // teste de iteração
     var it = 30;
-    var l30datanew = [];
-    var average = 0;
-
-    for (var i = l30data.length - it; i < l30data.length; i++) {
-        l30datanew.push(l30data[i])
-        average += l30data[i].medium_ticket;
-    }
-    average = average / l30datanew.length
-
-
     var piedatanew = [...piedata]
-    var averagedatanew = l30datanew.slice()
-
     piedatanew.sort((a, b) => { return a.value - b.value }).reverse()
-    averagedatanew.map((i) => i["new_medium_ticket"] = (100 * i.medium_ticket / average - 100).toFixed(2));
 
-    const [show, setShow] = useState(false);
-    const change_hover = () => show ? setShow(false) : setShow(true);
     // HTML
     return (
         <div><SideBar />
@@ -116,21 +77,21 @@ export default function Dashboards(props) {
                     <div className="graph_line">
                         <div className="auxcard">
                             <h1>Quantidade Vendida</h1>
-                            <BarPlot data={timedata} param={"quantidade_vendida"} color={"crimson"} xlabel={"time"}/>
+                            <BarPlot data={timedata} param={"dayReport.sales"} color={"crimson"} xlabel={"date"}/>
                         </div>
                         <div className="auxcard">
                             <h1>Lucro</h1>
-                            <BarPlot data={l30datanew} param={"profit"} color={"rgb(35, 90, 255)"} xlabel={"day"} />
+                            <BarPlot data={timedata} param={"dayReport.profit"} color={"rgb(35, 90, 255)"} xlabel={"date"} />
                         </div>
                     </div>
                     <div className="graph_line">
                         <div className="auxcard">
                             <h1>Ticket Médio</h1>
-                            <MTicket data={l30datanew} xlabel={"day"}></MTicket>
+                            <MTicket data={timedata} param={"dayReport.mediumticket"} xlabel={"date"}></MTicket>
                         </div>
                         <div className="auxcard">
-                            <h1>Erro Relativo do Ticket Médio</h1>
-                            <AverageMTicket data={averagedatanew} xlabel={"day"} param={"new_medium_ticket"}></AverageMTicket>
+                            <h1>Faturamento</h1>
+                            <AverageMTicket data={timedata} param= {"metric"} xlabel={"date"}></AverageMTicket>
                         </div>
                     </div>
                     <div className="graph_line">
