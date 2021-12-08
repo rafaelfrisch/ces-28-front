@@ -61,7 +61,7 @@ export default function PiePlot(props){
         innerRadius={100}
         outerRadius={120}
         fill="indigo"
-        dataKey="value"
+        dataKey="vendas"
         onMouseEnter={
             (_, index) => 
                 {setState({

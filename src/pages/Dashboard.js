@@ -5,7 +5,6 @@ import BarPlot from '../components/BarPlot';
 import MTicket from '../components/MTicket';
 import AverageMTicket from '../components/AverageMTicket';
 import PieChart from '../components/LabelPiePlot';
-import piedata from '../components/data/PieData';
 import TopChart from '../components/HorBarChart';
 import SideBar from '../components/SideBar';
 import { baseURL } from '../constants';
@@ -19,6 +18,8 @@ export default function Dashboards(props) {
     const [dateIni, setDateIni] = useState("2021-08-20");
     const [dateEnd, setDateEnd] = useState("2021-08-31");
     const [timedata, setTimeData] = useState([]);
+    const [piedata, setPieData] = useState([]);
+
     console.log(timedata)
     useEffect(() => {
         getOrdersByDate(token, dateIni, dateEnd);
@@ -62,17 +63,14 @@ export default function Dashboards(props) {
                     }
                 )
             }
-            console.log(aux)
-            console.log(aux2)
             setLoading(false)
             setTimeData(aux)
+            setPieData(aux2)
         })
     }
 
-    // teste de iteração
-    var it = 30;
     var piedatanew = [...piedata]
-    piedatanew.sort((a, b) => { return a.value - b.value }).reverse()
+    piedatanew.sort((a, b) => { return a.vendas - b.vendas }).reverse()
 
     // HTML
     return (
@@ -144,7 +142,7 @@ export default function Dashboards(props) {
                         <div className="auxcard">
                             <h1>Categorias mais vendidas</h1>
                             <div style={loading ? {display: 'none'} : {display: 'block'}}>
-                                <TopChart data={piedatanew} xlabel={"name"} param={"value"}></TopChart>
+                                <TopChart data={piedatanew} xlabel={"name"} param={"vendas"}></TopChart>
                             </div>
                             <div className="spinner" style={loading ? {display: 'block'} : {display: 'none'}}>
                                 <Spinner animation="border" role="status">
