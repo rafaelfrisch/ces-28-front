@@ -10,6 +10,7 @@ import Button from 'react-bootstrap/Button';
 import SideBar from '../components/SideBar';
 import {baseURL} from '../constants';
 import Spinner from 'react-bootstrap/Spinner';
+import { FiEdit, FiTrash2 } from "react-icons/fi";
 
 function Products() {
 
@@ -37,7 +38,6 @@ function Products() {
 
     useEffect(() => {
         getAllCategories(token);
-        console.log('oi')
     }, [token])
 
     //Get all categories
@@ -94,8 +94,8 @@ function Products() {
     }
 
     //Create product
-    async function createProduct(token, productName, productPrice, productCost, productStock, productCategory){
-        console.log(productName)
+    async function createProduct(event, token, productName, productPrice, productCost, productStock, productCategory){
+        event.preventDefault();
         fetch(baseURL + routeCreateProduct + productCategory, {
           method: 'POST',
           headers:{
@@ -121,7 +121,8 @@ function Products() {
     }
 
     //Create category
-    async function createCategory(token, categoryName){
+    async function createCategory(event, token, categoryName){
+        event.preventDefault();
         if(categoryName !== null && categoryName != "")
             fetch(baseURL + routeCreateCategory, {
             method: 'POST',
@@ -131,11 +132,12 @@ function Products() {
                 'Authorization': "Bearer " + token
             },
             body: JSON.stringify({
-                name: categoryName,
+                name: categoryName
             })
             }).then(res => {
             return res.json();
             }).then(data => {
+                console.log(data)
                 if(data.message == "Category created succefully"){
                     setShowCategoriesModal(!showCategoriesModal);
                     window.location.reload(true);
@@ -167,6 +169,7 @@ function Products() {
         {
             Header: 'Ações',
             accessor: 'col6',
+            Cell: e =><span><a href="http://google.com" style={{marginRight: 30}}><FiEdit size={22} color="black"/></a><a href="http://google.com"><FiTrash2 size={22} color="red"/></a></span>
         }
     ]
 
@@ -195,24 +198,23 @@ function Products() {
                     <Modal.Header closeButton>
                         <Modal.Title>Cadastro de produto</Modal.Title>
                     </Modal.Header>
-
-                    <Modal.Body>
-                        <Form>
+                    <Form onSubmit={(e) => createProduct(e, token, productName.target.value, productPrice.target.value, productCost.target.value, productStock.target.value, productCategory.target.value)}>
+                        <Modal.Body>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label>Nome</Form.Label>
-                                <Form.Control type="text" placeholder="Nome do produto" onChange={setProductName}/>
+                                <Form.Control type="text" placeholder="Nome do produto" onChange={setProductName} required/>
                             </Form.Group>
                             <Row className="g-2">
                                 <Col md>
                                     <Form.Group className="mb-3">
                                         <Form.Label>Preço</Form.Label>
-                                        <Form.Control type="text" placeholder="Preço do produto" onChange={setProductPrice}/>
+                                        <Form.Control type="text" placeholder="Preço do produto" onChange={setProductPrice} required/>
                                     </Form.Group>
                                 </Col>
                                 <Col md>
                                     <Form.Group className="mb-3">
                                         <Form.Label>Custo</Form.Label>
-                                        <Form.Control type="text" placeholder="Custo do produto" onChange={setProductCost}/>
+                                        <Form.Control type="text" placeholder="Custo do produto" onChange={setProductCost} required/>
                                     </Form.Group>
                                 </Col>
                             </Row>
@@ -220,44 +222,41 @@ function Products() {
                                 <Col sm={4}>
                                     <Form.Group className="mb-3">
                                         <Form.Label>Estoque</Form.Label>
-                                        <Form.Control type="text" placeholder="Estoque" onChange={setProductStock}/>
+                                        <Form.Control type="text" placeholder="Estoque" onChange={setProductStock} required/>
                                     </Form.Group>
                                 </Col>
                                 <Col>
                                     <Form.Label>Categoria</Form.Label>
-                                    <Form.Select aria-label="Default select example" onChange={setProductCategory}>
+                                    <Form.Select aria-label="Default select example" onChange={setProductCategory} required>
                                         {categories.map(function(obj){
                                             return <option value={obj.id}>{obj.name}</option>;
                                         })}
                                     </Form.Select>
                                 </Col>
                             </Row>
-                        </Form>
-                    </Modal.Body>
-
-                    <Modal.Footer>
-                        <Button variant="danger" onClick={() => setShowProductsModal(!showProductsModal)}>Fechar</Button>
-                        <Button variant="info" onClick={() => createProduct(token, productName.target.value, productPrice.target.value, productCost.target.value, productStock.target.value, productCategory.target.value)}>Cadastrar</Button>
-                    </Modal.Footer>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="danger" onClick={() => setShowProductsModal(!showProductsModal)}>Fechar</Button>
+                            <Button type="submit" variant="info">Cadastrar</Button>
+                        </Modal.Footer>
+                    </Form>
                 </Modal>
                 <Modal show={showCategoriesModal} onHide={() => setShowCategoriesModal(!showCategoriesModal)}>
                     <Modal.Header closeButton>
                         <Modal.Title>Cadastro de categoria</Modal.Title>
                     </Modal.Header>
-
-                    <Modal.Body>
-                        <Form>
-                            <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Label>Nova categoria</Form.Label>
-                                <Form.Control type="text" placeholder="Categoria" onChange={setCategoryInput} />
-                            </Form.Group>
-                        </Form>
-                    </Modal.Body>
-
-                    <Modal.Footer>
-                        <Button variant="danger" onClick={() => setShowCategoriesModal(!showCategoriesModal)}>Fechar</Button>
-                        <Button variant="info" onClick={() => createCategory(token, categoryInput.target.value)} >Cadastrar</Button>
-                    </Modal.Footer>
+                    <Form onSubmit={(e) => createCategory(e, token, categoryInput.target.value)}>
+                        <Modal.Body>
+                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                    <Form.Label>Nova categoria</Form.Label>
+                                    <Form.Control type="text" placeholder="Categoria" onChange={setCategoryInput} required/>
+                                </Form.Group>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="danger" onClick={() => setShowCategoriesModal(!showCategoriesModal)}>Fechar</Button>
+                            <Button type="submit" variant="info" >Cadastrar</Button>
+                        </Modal.Footer>
+                    </Form>
                 </Modal>
             </div>
         </div>
