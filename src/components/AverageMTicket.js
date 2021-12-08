@@ -4,8 +4,8 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 
 export default function AverageMTicket(props) {
 
-    const dataMax = Math.max(...props.data.map((i) => (i.metric)));
-    const dataMin = Math.min(...props.data.map((i) => (i.metric)));
+    const dataMax = Math.max(...props.data.map((i) => (i.err_rel_ticket_medio)));
+    const dataMin = Math.min(...props.data.map((i) => (i.err_rel_ticket_medio)));
 
     const gradientOffset = () => {
         if (dataMax <= 0) {

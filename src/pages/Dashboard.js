@@ -40,13 +40,18 @@ export default function Dashboards(props) {
             return res.json();
         }).then(data => {
             let aux = [];
+            let aux2 = [];
             let average = 0;
             for(let i = 0; i< data.length; i++){
                 average += data[i].dayReport.mediumticket/data.length;
             }
             for(let i = 0; i< data.length; i++){
                 aux.push({...data[i],
-                    metric: (data[i].dayReport.mediumticket - average)/average*100
+                    prod_vendidos: data[i].dayReport.sales,
+                    lucro: parseFloat(data[i].dayReport.profit.toFixed(2)),
+                    ticket_medio: parseFloat(data[i].dayReport.mediumticket.toFixed(2)),
+                    x: data[i].date.split('/').reverse().join('/'),
+                    err_rel_ticket_medio: ((data[i].dayReport.mediumticket - average)/average*100).toFixed(2)
                 })
             }
             setLoading(false)
@@ -81,7 +86,7 @@ export default function Dashboards(props) {
                         <div className="auxcard">
                             <h1>Quantidade Vendida</h1>
                             <div style={loading ? {display: 'none'} : {display: 'block'}}>
-                                <BarPlot data={timedata} param={"dayReport.sales"} color={"crimson"} xlabel={"date"}/>
+                                <BarPlot data={timedata} param={"prod_vendidos"} color={"crimson"} xlabel={"x"}/>
                             </div>
                             <div className="spinner" style={loading ? {display: 'block'} : {display: 'none'}}>
                                 <Spinner animation="border" role="status">
@@ -92,7 +97,7 @@ export default function Dashboards(props) {
                         <div className="auxcard">
                             <h1>Lucro</h1>
                             <div style={loading ? {display: 'none'} : {display: 'block'}}>
-                                <BarPlot data={timedata} param={"dayReport.profit"} color={"rgb(35, 90, 255)"} xlabel={"date"} />
+                                <BarPlot data={timedata} param={"lucro"} color={"rgb(35, 90, 255)"} xlabel={"x"} />
                             </div>
                             <div className="spinner" style={loading ? {display: 'block'} : {display: 'none'}}>
                                 <Spinner animation="border" role="status">
@@ -105,7 +110,7 @@ export default function Dashboards(props) {
                         <div className="auxcard">
                             <h1>Ticket Médio</h1>
                             <div style={loading ? {display: 'none'} : {display: 'block'}}>
-                                <MTicket data={timedata} param={"dayReport.mediumticket"} xlabel={"date"}></MTicket>
+                                <MTicket data={timedata} param={"ticket_medio"} xlabel={"x"}></MTicket>
                             </div>
                             <div className="spinner" style={loading ? {display: 'block'} : {display: 'none'}}>
                                 <Spinner animation="border" role="status">
@@ -116,7 +121,7 @@ export default function Dashboards(props) {
                         <div className="auxcard">
                             <h1>Erro relativo do Ticket Médio</h1>
                             <div style={loading ? {display: 'none'} : {display: 'block'}}>
-                                <AverageMTicket data={timedata} param= {"metric"} xlabel={"date"}></AverageMTicket>
+                                <AverageMTicket data={timedata} param= {"err_rel_ticket_medio"} xlabel={"x"}></AverageMTicket>
                             </div>
                             <div className="spinner" style={loading ? {display: 'block'} : {display: 'none'}}>
                                 <Spinner animation="border" role="status">
