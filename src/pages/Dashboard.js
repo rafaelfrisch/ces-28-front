@@ -42,18 +42,28 @@ export default function Dashboards(props) {
             let aux = [];
             let aux2 = [];
             let average = 0;
-            for(let i = 0; i< data.length; i++){
-                average += data[i].dayReport.mediumticket/data.length;
+            for(let i = 0; i< data.dayReportsArray.length; i++){
+                average += data.dayReportsArray[i].dayReport.mediumticket/data.length;
             }
-            for(let i = 0; i< data.length; i++){
-                aux.push({...data[i],
-                    prod_vendidos: data[i].dayReport.sales,
-                    lucro: parseFloat(data[i].dayReport.profit.toFixed(2)),
-                    ticket_medio: parseFloat(data[i].dayReport.mediumticket.toFixed(2)),
-                    x: data[i].date.split('/').reverse().join('/'),
-                    err_rel_ticket_medio: ((data[i].dayReport.mediumticket - average)/average*100).toFixed(2)
+            for(let i = 0; i< data.dayReportsArray.length; i++){
+                aux.push({...data.dayReportsArray[i],
+                    prod_vendidos: data.dayReportsArray[i].dayReport.sales,
+                    lucro: parseFloat(data.dayReportsArray[i].dayReport.profit.toFixed(2)),
+                    ticket_medio: parseFloat(data.dayReportsArray[i].dayReport.mediumticket.toFixed(2)),
+                    x: data.dayReportsArray[i].date.split('/').reverse().join('/'),
+                    err_rel_ticket_medio: ((data.dayReportsArray[i].dayReport.mediumticket - average)/average*100).toFixed(2)
                 })
             }
+            for (const categoryName in data.categoryReport) {
+                aux2.push(
+                    {
+                        name: categoryName,
+                        vendas: data.categoryReport[categoryName].sales
+                    }
+                )
+            }
+            console.log(aux)
+            console.log(aux2)
             setLoading(false)
             setTimeData(aux)
         })
