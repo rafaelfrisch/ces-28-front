@@ -20,7 +20,6 @@ export default function Dashboards(props) {
     const [timedata, setTimeData] = useState([]);
     const [piedata, setPieData] = useState([]);
 
-    console.log(timedata)
     useEffect(() => {
         getOrdersByDate(token, dateIni, dateEnd);
     }, [dateIni, dateEnd])
