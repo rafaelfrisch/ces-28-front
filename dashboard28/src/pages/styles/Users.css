@@ -5,18 +5,20 @@
     color: black;
     margin-top: 50px;
 }
-#new-product{
+#new-user{
     color: black;
 }
 #tableContainer{
-    background-color: white;
     display: flex;
     justify-content: center;
     margin-bottom: 100px;
+    min-height: 200px;
 }
 .button{
-    display: inline-block;
+    display: absolute;
     margin: 10px;
+    left: 20px;
+    top: 10px
 }
 .button:hover{
     color: black;

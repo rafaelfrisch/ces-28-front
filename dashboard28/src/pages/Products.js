@@ -9,12 +9,7 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import SideBar from '../components/SideBar';
 import {baseURL} from '../constants';
-{/* <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-  integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-  crossorigin="anonymous"
-/> */}
+import Spinner from 'react-bootstrap/Spinner';
 
 function Products() {
 
@@ -25,6 +20,7 @@ function Products() {
     let routeGetAllProductsInCategory = "getallproductsincategory/";
     let routeLogin = "login/";
 
+    const [loading, setLoading] = useState(true);
     const [showProductsModal, setShowProductsModal] = useState(false);
     const [showCategoriesModal, setShowCategoriesModal] = useState(false);
     const [productName, setProductName] = useState('');
@@ -66,6 +62,9 @@ function Products() {
                 });
             }
             setCategories(aux);
+            setTimeout(function(){
+                setLoading(false);
+            }, 1000);
         })
     }
 
@@ -183,7 +182,14 @@ function Products() {
                     </div>
                 </div>
                 <div id="tableContainer">
-                    <ProductsTable data={data} columns={columns}/>
+                    <div style={loading ? {display: 'none'} : {display: 'block'}}>
+                        <ProductsTable data={data} columns={columns}/>
+                    </div>
+                    <div className="spinner" style={loading ? {display: 'block'} : {display: 'none'}}>
+                        <Spinner animation="border" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </Spinner>
+                    </div>
                 </div>
                 <Modal show={showProductsModal} onHide={() => setShowProductsModal(!showProductsModal)}>
                     <Modal.Header closeButton>
