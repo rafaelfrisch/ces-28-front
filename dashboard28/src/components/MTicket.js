@@ -18,7 +18,7 @@ export default function MTicket(props) {
       <XAxis dataKey={props.xlabel} stroke="darkcyan" />
       <YAxis stroke="darkcyan" />
       <Tooltip />
-      <Line type="monotone" dataKey="medium_ticket" stroke="goldenrod" activeDot={{ r: 10 }} />
+      <Line type="monotone" dataKey={props.param} stroke="goldenrod" activeDot={{ r: 10 }} />
     </LineChart>
   );
 }
