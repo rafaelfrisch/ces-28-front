@@ -9,10 +9,10 @@
     color: black;
 }
 #tableContainer{
+    background-color: white;
     display: flex;
     justify-content: center;
     margin-bottom: 100px;
-    min-height: 200px;
 }
 .button{
     display: inline-block;
