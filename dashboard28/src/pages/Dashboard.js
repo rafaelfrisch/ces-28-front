@@ -12,8 +12,10 @@ import { baseURL } from '../constants';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 
 export default function Dashboards(props) {
+    const [loading, setLoading] = useState(true);
     const [dateIni, setDateIni] = useState("2021-08-20");
     const [dateEnd, setDateEnd] = useState("2021-08-31");
     const [timedata, setTimeData] = useState([]);
@@ -26,6 +28,7 @@ export default function Dashboards(props) {
     let routeOrderBydate = "getorderreportbydate";
 
     async function getOrdersByDate(token, dateIni, dateEnd) {
+        setLoading(true)
         fetch(baseURL + routeOrderBydate + "?initialDateParam=" + dateIni + "&finalDateParam=" + dateEnd, {
             method: 'GET',
             headers: {
@@ -46,6 +49,7 @@ export default function Dashboards(props) {
                     metric: (data[i].dayReport.mediumticket - average)/average*100
                 })
             }
+            setLoading(false)
             setTimeData(aux)
         })
     }
@@ -76,31 +80,73 @@ export default function Dashboards(props) {
                     <div className="graph_line">
                         <div className="auxcard">
                             <h1>Quantidade Vendida</h1>
-                            <BarPlot data={timedata} param={"dayReport.sales"} color={"crimson"} xlabel={"date"}/>
+                            <div style={loading ? {display: 'none'} : {display: 'block'}}>
+                                <BarPlot data={timedata} param={"dayReport.sales"} color={"crimson"} xlabel={"date"}/>
+                            </div>
+                            <div className="spinner" style={loading ? {display: 'block'} : {display: 'none'}}>
+                                <Spinner animation="border" role="status">
+                                    <span className="visually-hidden">Loading...</span>
+                                </Spinner>
+                            </div>
                         </div>
                         <div className="auxcard">
                             <h1>Lucro</h1>
-                            <BarPlot data={timedata} param={"dayReport.profit"} color={"rgb(35, 90, 255)"} xlabel={"date"} />
+                            <div style={loading ? {display: 'none'} : {display: 'block'}}>
+                                <BarPlot data={timedata} param={"dayReport.profit"} color={"rgb(35, 90, 255)"} xlabel={"date"} />
+                            </div>
+                            <div className="spinner" style={loading ? {display: 'block'} : {display: 'none'}}>
+                                <Spinner animation="border" role="status">
+                                    <span className="visually-hidden">Loading...</span>
+                                </Spinner>
+                            </div>
                         </div>
                     </div>
                     <div className="graph_line">
                         <div className="auxcard">
                             <h1>Ticket Médio</h1>
-                            <MTicket data={timedata} param={"dayReport.mediumticket"} xlabel={"date"}></MTicket>
+                            <div style={loading ? {display: 'none'} : {display: 'block'}}>
+                                <MTicket data={timedata} param={"dayReport.mediumticket"} xlabel={"date"}></MTicket>
+                            </div>
+                            <div className="spinner" style={loading ? {display: 'block'} : {display: 'none'}}>
+                                <Spinner animation="border" role="status">
+                                    <span className="visually-hidden">Loading...</span>
+                                </Spinner>
+                            </div>
                         </div>
                         <div className="auxcard">
-                            <h1>Faturamento</h1>
-                            <AverageMTicket data={timedata} param= {"metric"} xlabel={"date"}></AverageMTicket>
+                            <h1>Erro relativo do Ticket Médio</h1>
+                            <div style={loading ? {display: 'none'} : {display: 'block'}}>
+                                <AverageMTicket data={timedata} param= {"metric"} xlabel={"date"}></AverageMTicket>
+                            </div>
+                            <div className="spinner" style={loading ? {display: 'block'} : {display: 'none'}}>
+                                <Spinner animation="border" role="status">
+                                    <span className="visually-hidden">Loading...</span>
+                                </Spinner>
+                            </div>
                         </div>
                     </div>
                     <div className="graph_line">
                         <div className="auxcard">
                             <h1>Categorias mais vendidas</h1>
-                            <TopChart data={piedatanew} xlabel={"name"} param={"value"}></TopChart>
+                            <div style={loading ? {display: 'none'} : {display: 'block'}}>
+                                <TopChart data={piedatanew} xlabel={"name"} param={"value"}></TopChart>
+                            </div>
+                            <div className="spinner" style={loading ? {display: 'block'} : {display: 'none'}}>
+                                <Spinner animation="border" role="status">
+                                    <span className="visually-hidden">Loading...</span>
+                                </Spinner>
+                            </div>
                         </div>
                         <div className="auxcard">
                             <h1>Porcentagem por categoria</h1>
-                            <PieChart data={piedata} />
+                            <div style={loading ? {display: 'none'} : {display: 'block'}}>
+                                <PieChart data={piedata} />
+                            </div>
+                            <div className="spinner" style={loading ? {display: 'block'} : {display: 'none'}}>
+                                <Spinner animation="border" role="status">
+                                    <span className="visually-hidden">Loading...</span>
+                                </Spinner>
+                            </div>
                         </div>
                     </div>
                 </div>

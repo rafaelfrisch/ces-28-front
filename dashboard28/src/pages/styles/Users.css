@@ -1,0 +1,25 @@
+#container{
+    background-color: white;
+}
+#productsTable{
+    color: black;
+    margin-top: 50px;
+}
+#new-product{
+    color: black;
+}
+#tableContainer{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+.button{
+    display: inline-block;
+    margin: 10px;
+}
+.button:hover{
+    color: black;
+    background-color: white;
+    cursor: pointer;
+}

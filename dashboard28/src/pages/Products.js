@@ -39,24 +39,10 @@ function Products() {
     let products = [];
     const token = localStorage.getItem("token");
 
-    //Login -> gambiarra
     useEffect(() => {
-        fetch(baseURL + routeLogin, {
-          method: 'POST',
-          headers:{
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            email: "xxx@gmail.com",
-            password: "1a2b3c4D",
-          })
-        }).then(res => {
-          return res.json();
-        }).then(data => {
-            getAllCategories(token);
-        })
-    }, []);
+        getAllCategories(token);
+        console.log('oi')
+    }, [token])
 
     //Get all categories
     async function getAllCategories(token){
